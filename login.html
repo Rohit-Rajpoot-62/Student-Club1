@@ -4,95 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Club</title>
+<link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
 <style>
-body {
+ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f9ff;
+  overflow-x: hidden;
 }
-
-/* NAVBAR */
-nav{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: rgba(255,255,255,0.85);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-nav ul{
-  list-style: none;
-  display: flex;
-  gap: 22px;
-  align-items: center;
-}
-
-#a2{
-  text-decoration: none;
-  color: #3f37c9;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-#a2:hover{
-  background-color:#2c2a99;
-  color: whitesmoke;
-}
-
-#btn{
-  background-color: #3f37c9;
-  color: whitesmoke;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#btn:hover{
-  background-color: #2c2a99;
-}
-
-#btn a{
-  color: whitesmoke;
-  text-decoration: none;
-}
-
+ 
 i{
   color:#2c2a99;
-  font-size: 40px;
+  font-size: 34px;
 }
 
-
-footer{
-  background: #2c2a99;
-  color: #fff;
-  text-align: center;
-  padding: 18px;
-  font-size: 15px;
-}
-
-@media (max-width: 768px){
-  nav{
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  nav ul{
-    flex-direction: column;
-    gap: 12px;
-  }
-}
 .container{
   display:flex; 
     align-items:center;
@@ -124,13 +52,13 @@ footer{
 .container{
   background:#fff;
   border-radius:12px;   
-  padding:20px;
-  margin:40px auto; /* center and add vertical spacing */
+  padding:20px  ;
+  margin:40px auto  ; /* center and add vertical spacing */
   max-width:1000px; /* constrain width so it doesn't cover the whole page */
   width:90%;
   box-shadow:0 4px 8px rgba(0,0,0,0.1); 
 }
-h2{
+h1{
   margin-bottom:10px;
 }   
 p{
@@ -145,7 +73,7 @@ input{
   border-radius:6px;
   font-size:14px;
 }   
-button{
+#log,#sign{
   width:95%;
   background:#3f37c9;
   color:#fff;
@@ -155,7 +83,7 @@ button{
   cursor:pointer;
   padding: 12px;
 } 
-button:hover{
+#log:hover,#sign:hover{
   background:#2c2a99;
 }
 .switch{
@@ -188,7 +116,7 @@ button:hover{
 @media(max-width:768px){
   .container{
     flex-direction:column;
-    margin:40PX auto;/* reduce vertical margin on small screens */
+    margin: 40px auto; /* reduce vertical margin on small screens */
     max-width: 90%;
     padding: 15px;
 }
@@ -204,12 +132,13 @@ input{
   border-radius:8px;
   margin-bottom:12px; /* tighter spacing */
 }
-.radio-group{
+.radio-group,.radio-group1{
   display:flex;
   gap:15px;
   margin-bottom:15px;
+  text-align: center;
 }
-.radio-group label{
+.radio-group label,.radio-group1 label {
   font-size:14px;
 }
 .switch{
@@ -222,23 +151,41 @@ input{
   cursor:pointer;
   font-weight:600;
 }
-
+#btn {
+  background-color: #3f37c9;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px; /* 🔥 reduced padding */
+  cursor: pointer;
+  display: inline-block;
+}
+#btn a {
+  color: white;
+  text-decoration: none;
+  padding: 0;  /* ❌ remove extra padding */
+  margin: 0;
+  display: inline;
+}
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">
-    <h2><i class="fa-solid fa-graduation-cap"></i> Student Club</h2>
-  </div>
+     <nav>
+    <div class="logo">
+        <h2><i id="logo-icon" class="fa-solid fa-graduation-cap"></i> Student Club</h2>
+    </div>
 
-  <ul>
-    <li><a href="index.html" id="a2">Home</a></li>
-    <li><a href="feature.html" id="a2">Features</a></li>
-    <li><a href="contact.html"id="a2" >Contact</a></button></li>
-    <li><button id="btn"><a href="login.html" >Login</a></button></li>
-  </ul>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i id="logo-icon" class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul id="nav-links">
+        <li><a href="./index.html" id="a2">Home</a></li>
+        <li><a href="./feature.html" id="a2">Features</a></li>
+        <li><a href="./contact.html" id="a2">Contact</a></li>
+        <li><button id="btn"><a href="./login.html" id="a2">Login</a></button></li>
+    </ul>
 </nav>
  
 <div class="container">
@@ -248,13 +195,13 @@ input{
 
     <!-- LOGIN -->
     <div id="loginBox">
-      <h2>LOGIN</h2>
-      <p>Welcome back to Student Club</p>
+      <h1 style="text-align: center;">LOGIN</h1>
+      <p >Welcome back to Student Club</p>
 
       <input type="email" placeholder="Email" class="input1">
       <input type="password" placeholder="Password" class="input2">
 
-      <button onclick="login()">Login</button>
+      <button onclick="login()" id="log">Login</button>
 
       <div class="switch">
         Don’t have an account? <span onclick="showSignup()">Signup</span>
@@ -272,13 +219,19 @@ input{
       <input type="text" placeholder="Mobile Number">
       <input type="password" placeholder="Create Password">
       <input type="password" placeholder="Confirm Password">
-
+      <input type="number"   placeholder="Enter your age">
+      <h3>Gender</h3>
       <div class="radio-group">
+         <label><input type="radio" name="gender" checked>Male</label>
+      <label><input type="radio" name="gender" checked>Female</label>
+     </div>
+     <h3>Role</h3>
+     <div class="radio-group1">
         <label><input type="radio" name="role2" checked> Student</label>
         <label><input type="radio" name="role2"> Teacher</label>
       </div>
 
-      <button>Signup</button>
+      <button id="sign">Signup</button>
 
       <div class="switch">
         Already have an account? <span onclick="showLogin()">Login</span>
@@ -286,8 +239,7 @@ input{
 
       <div class="social">
         <button><i class="fa-brands fa-google"></i> Login with Google</button>
-        <button><i class="fa-brands fa-facebook"></i> Login with Facebook</button>
-      </div>
+        </div>
     </div>
 
   </div>
@@ -301,6 +253,12 @@ input{
 </div>
 
 <script>
+    
+function toggleMenu() {
+    const menu = document.getElementById("nav-links");
+    menu.classList.toggle("active");
+}
+
 function showSignup(){
   document.getElementById("loginBox").classList.add("hide");
   document.getElementById("signupBox").classList.remove("hide");
@@ -324,14 +282,14 @@ function login(){
   let email = document.querySelector(".input1").value;
   let password = document.querySelector(".input2").value;
 
-  if(email=="sudha@gmail.com" && password=="sudha"){
-    window.location.href="Students/studentdashboard.html";
+  if(email=="sudharshanjaggula605@gmail.com" && password=="sudha8897"){
+    window.location.href="../students/studentdashboard.html";
   }
   else if(email=="aditya22@gmail.com" && password=="aditya22"){
-    window.location.href="Teachers/teacherdashboard.html";
+    window.location.href="../Teachers/teacherdashboard.html";
   }
   else if(email=="humera08@gmail.com" && password=="humera08"){
-    window.location.href="Admin/admindashboard.html";
+    window.location.href="../admin/admindashboared.html";
   }
   else{
     alert("Invalid credentials");
@@ -341,5 +299,3 @@ function login(){
 
 </body>
 </html>
-
-

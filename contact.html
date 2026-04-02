@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Club</title>
+<link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
@@ -14,63 +15,9 @@ body {
   background: #f4f9ff;
 }
 
-/* NAVBAR */
-nav{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: rgba(255,255,255,0.85);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-nav ul{
-  list-style: none;
-  display: flex;
-  gap: 22px;
-  align-items: center;
-}
-
-#a2{
-  text-decoration: none;
-  color: #3f37c9;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-#a2:hover{
-  background-color:#2c2a99;
-  color: whitesmoke;
-}
-
-#btn{
-  background-color: #3f37c9;
-  color: whitesmoke;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#btn:hover{
-  background-color: #2c2a99;
-}
-
-#btn a{
-  color: whitesmoke;
-  text-decoration: none;
-}
-
 i{
   color:#2c2a99;
-  font-size: 40px;
+  font-size: 34px;
 }
 
 /* HEADINGS */
@@ -146,42 +93,35 @@ h1, h3{
 }
 
 
-footer{
-  background: #2c2a99;
-  color: #fff;
-  text-align: center;
-  padding: 18px;
-  font-size: 15px;
-}
-
-@media (max-width: 768px){
-  nav{
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  nav ul{
-    flex-direction: column;
-    gap: 12px;
-  }
-}
+.foot{
+     background-color: #2c2a99;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 16px;
+        } 
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">
-    <h2><i class="fa-solid fa-graduation-cap"></i> Student Club</h2>
-  </div>
+     <nav>
+    <div class="logo">
+        <h2><i id="logo-icon" class="fa-solid fa-graduation-cap"></i> Student Club</h2>
+    </div>
 
-  <ul>
-    <li><a href="index.html" id="a2">Home</a></li>
-    <li><a href="feature.html" id="a2">Features</a></li>
-    <li><button id="btn"><a href="contact.html">Contact</a></button></li>
-    <li><a href="login.html" id="a2">Login</a></li>
-  </ul>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i id="logo-icon" class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul id="nav-links">
+        <li><a href="./index.html" id="a2">Home</a></li>
+        <li><a href="./feature.html" id="a2">Features</a></li>
+        <li><button id="btn"><a href="./contact.html" >Contact</a></button></li>
+        <li><a href="./login.html" id="a2">Login</a></li>
+    </ul>
 </nav>
+  
 
 <h1>We'd love to hear from you!</h1>
 <h3>Have a questions or suggestions? <strong>Let's hear it!</strong></h3>
@@ -202,12 +142,14 @@ footer{
     </form>
   </div>
 </section>
+<footer class="foot">@ 2026 Student Club All rights reseved</footer>
 
-<footer>
-  <p>&copy; 2026 Student Club. All rights reserved.</p>
-</footer>
 
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("nav-links");
+    menu.classList.toggle("active");
+}
+</script>
 </body>
 </html>
-
-
