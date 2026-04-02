@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Club</title>
-
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
 <style>
@@ -13,64 +13,9 @@ body {
   font-family: Arial, sans-serif;
   background: #f4f9ff;
 }
-
-/* NAVBAR */
-nav{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: rgba(255,255,255,0.85);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-nav ul{
-  list-style: none;
-  display: flex;
-  gap: 22px;
-  align-items: center;
-}
-
-#a2{
-  text-decoration: none;
-  color: #3f37c9;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-#a2:hover{
-  background-color:#2c2a99;
-  color: whitesmoke;
-}
-
-#btn{
-  background-color: #3f37c9;
-  color: whitesmoke;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#btn:hover{
-  background-color: #2c2a99;
-}
-
-#btn a{
-  color: whitesmoke;
-  text-decoration: none;
-}
-
 i{
   color:#2c2a99;
-  font-size: 40px;
+  font-size: 34px;
 }
 
 footer{
@@ -81,18 +26,6 @@ footer{
   font-size: 15px;
 }
 
-@media (max-width: 768px){
-  nav{
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  nav ul{
-    flex-direction: column;
-    gap: 12px;
-  }
-}
-
 /* ================= COURSES GRID ================= */
 .parent20{
     display:grid;
@@ -100,6 +33,7 @@ footer{
     gap:40px;
     margin-top:50px;
     width:100%;
+
 }
 
 /* ================= COURSE CARD ================= */
@@ -109,6 +43,7 @@ footer{
     box-shadow:0 5px 10px rgba(0,0,0,0.15);
     transition:all 0.3s ease;
     overflow:hidden;
+    
 }
 
 .card1:hover{
@@ -203,27 +138,54 @@ button{
     background:#1e40af;
  color:white; }
 
+ /* ================= MOBILE ONLY FIX FOR CARDS ================= */
+@media (max-width: 768px) {
+  .parent20 {
+    grid-template-columns: 1fr; /* one card per row */
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .card1 img {
+    height: 160px; /* reduce image height */
+  }
+
+  .card-body {
+    padding: 15px;
+  }
+
+  .card-body h3 {
+    font-size: 18px;
+  }
+
+  .card-body p {
+    font-size: 14px;
+  }
+}
 
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">
-    <h2><i class="fa-solid fa-graduation-cap"></i> Student Club</h2>
-  </div>
+     <nav>
+    <div class="logo">
+        <h2><i id="logo-icon" class="fa-solid fa-graduation-cap"></i> Student Club</h2>
+    </div>
 
-  <ul>
-    <li><a href="index.html" id="a2">Home</a></li>
-    <li><a href="feature.html" id="a2">Features</a></li>
-    <li><a href="contact.html" id="a2">Contact</a></li>
-    <li><a href="login.html" id="a2">Login</a></li>
-  </ul>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i id="logo-icon" class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul id="nav-links">
+        <li><a href="./index.html" id="a2">Home</a></li>
+        <li><button id="btn"><a href="./feature.html" id="a2">Features</a></button></li>
+        <li><a href="./contact.html" id="a2">Contact</a></li>
+        <li><a href="./login.html" id="a2">Login</a></li>
+    </ul>
 </nav>
-
-    <h1>My Courses!</h1>
-    <p>"Track your learning progress and earn Certificates"</p>
+    <h1 style="padding-left: 20px;">My Courses!</h1>
+    <p style="padding-left: 20px;">"Track your learning progress and earn Certificates"</p>
 <!-- ================= VIDEO LIST SECTION ================= -->
 <div id="videoSection" style="display:none;">
 
@@ -262,7 +224,7 @@ button{
 
 </div>
 
-    <section class="parent20">
+    <section class="parent20" style="padding-left: 10px;">
 
         <!-- CARD 1 -->
         <div class="card1" onclick="openVideos()">
@@ -306,6 +268,11 @@ button{
 </footer>
 
 <script>
+      
+function toggleMenu() {
+    const menu = document.getElementById("nav-links");
+    menu.classList.toggle("active");
+}
     
 function openVideos(){
     document.getElementById("videoSection").style.display = "block";
