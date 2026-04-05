@@ -550,47 +550,22 @@ const videos = [
     { name: "Quantum Mechanics Lecture" },
     { name: "World War II Documentary" },
 ];
+
+const users = [
+    { name: "John Doe" },
+    { name: "Jane Smith" },
+    { name: "Alice Johnson" },
+];
+
+const growth = [
+    { name: "User Growth: +15% this month" },
+    { name: "Course Enrollment: +20%" },
+    { name: "Video Views: +25%" },
+];
 const detailView = document.getElementById("detail-view");
 const detailTitle = document.getElementById("detail-title");
 const detailList = document.getElementById("detail-list");
 const mainContent = document.querySelector(".stats").parentElement;
-
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
-        const action = card.dataset.action;
-        mainContent.style.display = "none";
-        detailView.style.display = "block";
-        
-        let data = [];
-        if(action === "users") {
-            detailTitle.textContent = "Users List";
-            data = users;
-        } else if(action === "courses") {
-            detailTitle.textContent = "Courses List";
-            data = courses;
-        } else if(action === "videos") {
-            detailTitle.textContent = "Videos List";
-            data = videos;
-        }
-
-        // Fill the detail list
-        detailList.innerHTML = "";
-        data.forEach((item, index) => {
-            const div = document.createElement("div");
-            div.style.display = "flex";
-            div.style.justifyContent = "space-between";
-            div.style.alignItems = "center";
-            div.style.background = "#f1f1f1";
-            div.style.padding = "12px";
-            div.style.marginBottom = "10px";
-            div.style.borderRadius = "8px";
-
-            div.innerHTML = `<span>${item.name}</span>
-                             <button onclick="removeItem(${index}, '${action}')">Remove</button>`;
-            detailList.appendChild(div);
-        });
-    });
-});
 
 function backToDashboard() {
     detailView.style.display = "none";
@@ -601,6 +576,7 @@ function removeItem(index, type) {
     if(type === "users") users.splice(index, 1);
     if(type === "courses") courses.splice(index, 1);
     if(type === "videos") videos.splice(index, 1);
+    if(type === "growth") growth.splice(index, 1);
     // Refresh the list
     document.querySelector(`.card[data-action="${type}"]`).click();
 }
@@ -624,6 +600,9 @@ document.querySelectorAll(".card").forEach(card => {
         } else if(action === "videos") {
             detailTitle.textContent = "Videos List";
             data = videos;
+        } else if(action === "growth") {
+            detailTitle.textContent = "Growth Statistics";
+            data = growth;
         }
 
         // Fill the detail list
