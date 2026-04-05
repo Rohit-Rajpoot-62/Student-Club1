@@ -436,6 +436,8 @@ table td .actions .delete {
     <th>Plays</th>
     <th>Actions</th>
 </tr>
+</thead>
+<tbody id="videoTable">
 <tr>
     <td>HTML_Intro.mp4</td>
     <td>Web Development</td>
@@ -456,8 +458,7 @@ table td .actions .delete {
         <span onclick="playVideo('videos/JavaScript_Basics.mp4', this)">▶️</span>
         <span class="delete" onclick="deleteRow(this)">🗑️</span >   
 </tr>
-
-</thead>
+</tbody>
 </table>
 </div>
 
@@ -505,6 +506,8 @@ function uploadVideo(){
     `;
 
     table.appendChild(row);
+
+    alert("Video uploaded successfully!");
 
     fileInput.value="";
     fileNameText.textContent="";

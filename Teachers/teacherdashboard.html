@@ -756,11 +756,14 @@ function showAnswerBox(button) {
             style="width:100%; padding:10px; margin-top:10px;
             border-radius:6px; border:1px solid #ccc;"></textarea>
 
-        <button class="btn-outline" style="margin-top:10px;"
-            onclick="submitAnswer(this)">Submit</button>
+        <div style="display:flex; gap:10px; margin-top:10px;">
+            <button class="btn-outline" style="flex:1;" onclick="submitAnswer(this)">Submit</button>
+            <button class="btn-outline" style="flex:1; background:#dc2626; border-color:#dc2626;" onclick="cancelAnswer(this)">Cancel</button>
+        </div>
     `;
 
     button.parentElement.appendChild(answerBox);
+    button.style.display = 'none';
 }
 
 function submitAnswer(btn) {
@@ -781,6 +784,16 @@ function submitAnswer(btn) {
             ✅ Answer submitted successfully!
         </p>
     `;
+}
+
+function cancelAnswer(btn) {
+    const answerBox = btn.parentElement.parentElement;
+    const pendingItem = answerBox.parentElement;
+    const answerButton = pendingItem.querySelector('.btn-outline');
+    if (answerButton) {
+        answerButton.style.display = '';
+    }
+    answerBox.remove();
 }
 
 </script>
